@@ -19,5 +19,5 @@ urlpatterns = [
     # path('model8/', views.model8,name='model8'),
     # path('model9/', views.model9,name='model9'),
     # path('model10/', views.model10,name='model10'),
-    path('model11/', views.model11,name='model11'),
+    # path('model11/', views.model11,name='model11'),
 ]
