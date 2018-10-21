@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('orm/',include('db_orm.urls')),
     path('view/',include('method_view.urls')),
+    path('form/',include('form_demo.urls')),
 ]
