@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('orm/',include('db_orm.urls')),
     path('view/',include('method_view.urls')),
     path('form/',include('form_demo.urls')),
-]
+    path('cookie/',include('cookie_session.urls')),
+    path('context/',include('content_process.urls')),
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) # url方式访问读取文件（列表用+）

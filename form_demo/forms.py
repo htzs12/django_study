@@ -1,6 +1,19 @@
 from django import forms
 from django.core import validators
-from .models import User
+from .models import User,File
+
+
+class BaseForm(forms.Form):
+    def get_errors(self):
+        errors = self.errors.get_json_data()
+        new_errors = {}
+        for key,message_dicts in errors.items():
+            messages = []
+            for message_dict in message_dicts:
+                message = message_dict['message']
+                messages.append(message)
+            new_errors[key] = messages
+        return new_errors
 
 
 class RegisterForm(forms.Form):
@@ -17,6 +30,17 @@ class RegisterForm(forms.Form):
             raise forms.ValidationError(message='%s已经被注册~'%telephone)
         return telephone
 
+    def get_errors(self):
+        errors = self.errors.get_json_data()
+        new_errors = {}
+        for key,message_dicts in errors.items():
+            messages = []
+            for message_dict in message_dicts:
+                message = message_dict['message']
+                messages.append(message)
+            new_errors[key] = messages
+        return new_errors
+
     def clean(self):
         # 如果来到clearn方法，说明之前每一个字段都已经验证成功。
         cleaned_data = super().clean()
@@ -27,5 +51,11 @@ class RegisterForm(forms.Form):
         return cleaned_data
 
 
-
-
+class FileForm(forms.ModelForm):
+    class Meta:
+        model = File
+        fields = '__all__'
+        error_messages = {
+            'thumbnial' : {
+                'invalid_extension':'请上传正确格式的文件...'
+        }}
