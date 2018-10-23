@@ -26,4 +26,5 @@ urlpatterns = [
     path('cookie/',include('cookie_session.urls')),
     path('context/',include('content_process.urls')),
     path('icbc/',include('icbc.urls')),
+    path('user/',include('users.urls')),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) # url方式访问读取文件（列表用+）
