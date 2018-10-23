@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'form_demo',
     'cookie_session',
     'content_process',
+    'icbc'
 ]
 
 MIDDLEWARE = [

@@ -3,8 +3,8 @@ from django.urls import path
 
 from . import views
 
-app_name = 'content_process'
+app_name = 'icbc'
 
 urlpatterns = [
-    path('',views.index),
+    # path('', views.index,name='index'),
 ]
