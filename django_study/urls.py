@@ -27,4 +27,5 @@ urlpatterns = [
     path('context/',include('content_process.urls')),
     path('icbc/',include('icbc.urls')),
     path('user/',include('users.urls')),
+    path('mem/',include('mem_demo.urls')),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) # url方式访问读取文件（列表用+）

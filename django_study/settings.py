@@ -43,8 +43,23 @@ INSTALLED_APPS = [
     'cookie_session',
     'content_process',
     'icbc',
-    'users'
+    'users',
+    'mem_demo'
 ]
+
+
+def KEY_FUNCTION(key,key_prefix,version):
+    return 'django:'+key
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+        # 'KEY_FUNCTION':KEY_FUNCTION,
+        'KEY_FUNCTION':lambda key,key_prefix,version:'django:'+key,
+    }
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -89,7 +104,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 
 # Password validation
